@@ -81,6 +81,7 @@ const Restaurant = (props) => {
                           <strong>Date: </strong>
                           {review.date}
                         </p>
+                        {/* for a logined  user */}
                         {props.user && props.user.id === review.user_id && (
                           // eslint-disable-next-line react/jsx-no-comment-textnodes
                           <div className="row">
