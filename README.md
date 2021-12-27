@@ -17,6 +17,10 @@ const [user, setUser] = React.useState(null);
 qui va creer user ds la state avec value= null et un setter pour elle aussi
 
 a voir aussi useEffect
+useEffect(() => {
+getRestaurant(props.match.params.id);
+}, [props.match.params.id]);
+ca update le getRestaurant(props.match.params.id) ssi [props.match.params.id] est modifie
 
 \***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***START SERVERS\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
 

@@ -13,6 +13,7 @@ const Restaurant = (props) => {
   };
   const [restaurant, setRestaurant] = useState(initialRestaurantState);
 
+  //load restaurant from the backend
   const getRestaurant = (id) => {
     RestaurantDataService.get(id)
       .then((response) => {
@@ -23,11 +24,12 @@ const Restaurant = (props) => {
         console.log(e);
       });
   };
-
+  //update the restaurant
   useEffect(() => {
     getRestaurant(props.match.params.id);
   }, [props.match.params.id]);
 
+  //delete a review from the backend
   const deleteReview = (reviewId, index) => {
     RestaurantDataService.deleteReview(reviewId, props.user.id)
       .then((response) => {

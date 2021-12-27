@@ -34,7 +34,7 @@ const RestaurantsList = (props) => {
     setSearchCuisine(searchCuisine);
   };
 
-  //recupere tous les restaurants
+  //load all the restaurant from the backend
   const retrieveRestaurants = () => {
     RestaurantDataService.getAll()
       .then((response) => {
@@ -46,7 +46,7 @@ const RestaurantsList = (props) => {
       });
   };
 
-  //recupere tous les cuisines
+  //load all the cuisines from the backend
   const retrieveCuisines = () => {
     RestaurantDataService.getCuisines()
       .then((response) => {

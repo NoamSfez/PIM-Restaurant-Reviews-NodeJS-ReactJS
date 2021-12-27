@@ -52,7 +52,7 @@ function App() {
         </div>
       </nav>
 
-      {/* En fonction de l'URL on va avoir la difffernte Route */}
+      {/* En fonction de l'URL on va avoir la differente Route */}
       <div className="container mt-3">
         <Switch>
           <Route
