@@ -21,6 +21,8 @@ function App() {
 
   return (
     <div>
+      {/* Notre barre de navigation */}
+
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/restaurants" className="navbar-brand">
           Restaurant Reviews
@@ -50,16 +52,19 @@ function App() {
         </div>
       </nav>
 
+      {/* En fonction de l'URL on va avoir la difffernte Route */}
       <div className="container mt-3">
         <Switch>
           <Route
             exact
-            path={["/", "/restaurants"]}
+            path={["/", "/restaurants"]} //un ou l'autre
             component={RestaurantsList}
           />
           <Route
             path="/restaurants/:id/review"
             render={(props) => <AddReview {...props} user={user} />}
+            // a la differnce de component={...} quad on utilise render={...} ca nous permet d'envoyer des attributs
+            //donc la on renvoi le compoment AddReview avec nos props et le user
           />
           <Route
             path="/restaurants/:id"

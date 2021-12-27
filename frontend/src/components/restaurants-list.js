@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant";
 import { Link } from "react-router-dom";
 
+// ce fichier nous permet de recup la liste des restaurants depuis le server du backend
+// pour ca on va creer un folder services et dedans le file restaurant.js qui va utiliser
+// le file http-commons.js et de axios
+
 const RestaurantsList = (props) => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchName, setSearchName] = useState("");
@@ -9,6 +13,7 @@ const RestaurantsList = (props) => {
   const [searchCuisine, setSearchCuisine] = useState("");
   const [cuisines, setCuisines] = useState(["All Cuisines"]);
 
+  //nos components doivent faire qqchose apres le render donc on utiliser useEffect
   useEffect(() => {
     retrieveRestaurants();
     retrieveCuisines();
@@ -29,6 +34,7 @@ const RestaurantsList = (props) => {
     setSearchCuisine(searchCuisine);
   };
 
+  //recupere tous les restaurants
   const retrieveRestaurants = () => {
     RestaurantDataService.getAll()
       .then((response) => {
@@ -40,6 +46,7 @@ const RestaurantsList = (props) => {
       });
   };
 
+  //recupere tous les cuisines
   const retrieveCuisines = () => {
     RestaurantDataService.getCuisines()
       .then((response) => {
@@ -84,8 +91,10 @@ const RestaurantsList = (props) => {
 
   return (
     <div>
+      {/* Ligne avec les 3 sortes de search */}
       <div className="row pb-1">
-        <div className="input-group col-lg-4">
+        {/* search by name */}
+        <div className="input-group col-lg">
           <input
             type="text"
             className="form-control"
@@ -103,7 +112,8 @@ const RestaurantsList = (props) => {
             </button>
           </div>
         </div>
-        <div className="input-group col-lg-4">
+        {/* Search by zip */}
+        <div className="input-group col-lg">
           <input
             type="text"
             className="form-control"
@@ -121,10 +131,11 @@ const RestaurantsList = (props) => {
             </button>
           </div>
         </div>
-        <div className="input-group col-lg-4">
+        {/* Search by cuisine */}
+        <div className="input-group col-lg">
           <select onChange={onChangeSearchCuisine}>
             {cuisines.map((cuisine) => {
-              return <option value={cuisine}> {cuisine.substr(0, 20)} </option>;
+              return <option value={cuisine}> {cuisine.substr(0, 20)} </option>; //les 20 premiers
             })}
           </select>
           <div className="input-group-append">
@@ -139,6 +150,7 @@ const RestaurantsList = (props) => {
         </div>
       </div>
 
+      {/* Tous les petits carres des restaurants */}
       <div className="row">
         {restaurants.map((restaurant) => {
           const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
@@ -156,7 +168,7 @@ const RestaurantsList = (props) => {
                   </p>
                   <div className="row">
                     <Link
-                      to={"/restaurants/" + restaurant._id}
+                      to={"/restaurants/" + restaurant._id} //nous renvoi dans le file App.js dans la Route associee
                       className="btn btn-primary col-lg-5 mx-1 mb-1"
                     >
                       View Reviews
