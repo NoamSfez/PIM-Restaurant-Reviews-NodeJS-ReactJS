@@ -20,3 +20,15 @@ MongoClient.connect(process.env.RESTREVIEWS_DB_URI)
       console.log(`Listening on port ${port}`);
     });
   });
+
+// try {
+//   let client = await MongoClient.connect(process.env.RESTREVIEWS_DB_URI);
+//   await RestaurantsDAO.injectDB(client);
+//   await ReviewsDAO.injectDB(client);
+//   app.listen(port, () => {
+//     console.log(`Listening on port ${port}`);
+//   });
+// } catch (err) {
+//   console.error(err.stack);
+//   process.exit(1);
+// }
