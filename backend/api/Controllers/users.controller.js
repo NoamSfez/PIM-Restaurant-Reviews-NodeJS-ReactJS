@@ -18,13 +18,17 @@ export default class UsersController {
 
   static async postUser(req, res, next) {
     const data = JSON.stringify(req.body); //body request
-    console.log("data", data);
     try {
       let rep = await instance.post(
         "http://localhost:8080/api/employees/",
-        data
+        data,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
       );
-      console.log(rep.data);
+      res.json(rep.data);
     } catch (error) {
       console.log(error.toJSON());
     }
