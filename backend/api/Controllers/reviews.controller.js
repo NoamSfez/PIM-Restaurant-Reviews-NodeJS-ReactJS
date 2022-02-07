@@ -11,13 +11,18 @@ export default class ReviewsController {
       };
       const date = new Date();
 
-      const ReviewResponse = await ReviewsDAO.addReview(
+      const reviewResponse = await ReviewsDAO.addReview(
         restaurantId,
         userInfo,
         review,
         date
       );
-      res.json({ status: "success" });
+      var { error } = reviewResponse;
+      if (error) {
+        res.status(400).json({ error });
+      } else {
+        res.json({ status: "success" });
+      }
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
@@ -69,6 +74,7 @@ export default class ReviewsController {
         res.json({ status: "sucess!!" });
       }
     } catch (e) {
+      console.log(e);
       res.status(500).json({ error: e.message });
     }
   }
