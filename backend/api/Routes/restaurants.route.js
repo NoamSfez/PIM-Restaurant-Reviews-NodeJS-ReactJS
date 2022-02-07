@@ -8,11 +8,11 @@ const router = express.Router();
 router.route("/").get(RestaurantsController.apiGetRestaurants);
 router.route("/id/:id").get(RestaurantsController.apiGetRestaurantById); //un resto avec ses reviews
 router.route("/cuisines").get(RestaurantsController.apiGetRestaurantCuisines);
+router.route("/:id/reviews").get(RestaurantsController.apiGetRestaurantReviews);
 
 router
   .route("/review")
   .post(ReviewsController.apiPostReview)
   .put(ReviewsController.apiUpdateReview)
   .delete(ReviewsController.apiDeleteReview);
-
 export default router;

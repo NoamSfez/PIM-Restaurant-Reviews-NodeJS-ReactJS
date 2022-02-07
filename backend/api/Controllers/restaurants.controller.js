@@ -1,4 +1,5 @@
 import RestaurantsDAO from "../../dao/restaurantsDAO.js";
+import ReviewsDAO from "../../dao/reviewsDAO.js";
 
 export default class RestaurantsController {
   static async apiGetRestaurants(req, res, next) {
@@ -51,6 +52,16 @@ export default class RestaurantsController {
     try {
       let cuisines = await RestaurantsDAO.getCuisines();
       res.json(cuisines);
+    } catch (e) {
+      console.log(`api, ${e}`);
+      res.status(500).json({ error: e });
+    }
+  }
+  static async apiGetRestaurantReviews(req, res, next) {
+    try {
+      let id = req.params.id || {};
+      let reviews = await ReviewsDAO.getRestaurantReviews(id);
+      res.json(reviews);
     } catch (e) {
       console.log(`api, ${e}`);
       res.status(500).json({ error: e });

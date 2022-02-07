@@ -57,4 +57,36 @@ export default class ReviewsDAO {
       return { error: e };
     }
   }
+  static async getRestaurantReviews2(id) {
+    try {
+      const pipeline = [
+        {
+          $match: {
+            restaurant_id: new ObjectId(id),
+          },
+        },
+        {
+          $sort: {
+            date: -1,
+          },
+        },
+      ];
+
+      return await reviews.aggregate(pipeline).next();
+    } catch (e) {
+      console.error(`Something went wrong in getRestaurantReviews: ${e}`);
+      throw e;
+    }
+  }
+  static async getRestaurantReviews(id) {
+    try {
+      let reviewsArray = await reviews
+        .find({ restaurant_id: new ObjectId(id) })
+        .toArray();
+      return { reviews: reviewsArray.reverse() };
+    } catch (e) {
+      console.error(`Something went wrong in getRestaurantReviews: ${e}`);
+      throw e;
+    }
+  }
 }
