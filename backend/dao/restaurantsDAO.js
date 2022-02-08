@@ -109,11 +109,25 @@ export default class RestaurantsDAO {
     }
   }
 
+  //   static async getCuisines() {
+  //     let cuisines = [];
+  //     try {
+  //       cuisines = await restaurants.distinct("cuisine");
+  //       return cuisines;
+  //     } catch (e) {
+  //       console.error(`Unable to get cuisines, ${e}`);
+  //       return cuisines;
+  //     }
+  //   }
   static async getCuisines() {
-    let cuisines = [];
     try {
-      cuisines = await restaurants.distinct("cuisine");
-      return cuisines;
+      //
+      let cuisines = await restaurants.aggregate([
+        { $match: {} },
+        { $sortByCount: "$cuisine" },
+        { $project: { _id: 0, name: "$_id", count: "$count" } }, //rename _id to cuisine by delete _id field and add a new one
+      ]);
+      return { cuisines: await cuisines.toArray() };
     } catch (e) {
       console.error(`Unable to get cuisines, ${e}`);
       return cuisines;
