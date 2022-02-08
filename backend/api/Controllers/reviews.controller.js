@@ -69,13 +69,15 @@ export default class ReviewsController {
       }
 
       if (reviewResponse.deletedCount === 0) {
-        throw new Error("unable to delete review - this review does not exist");
+        throw new Error(
+          "unable to delete review - this review does not exist or user_id not correspond to request creator"
+        );
       } else {
         res.json({ status: "sucess!!" });
       }
     } catch (e) {
       console.log(e);
-      res.status(500).json({ error: e.message });
+      res.json({ error: e.message }).status(500);
     }
   }
 }

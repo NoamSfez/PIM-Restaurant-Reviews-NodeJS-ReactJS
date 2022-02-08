@@ -41,7 +41,7 @@ export default class RestaurantsController {
         res.status(404).json({ error: "Not found" });
         return;
       }
-      res.json(restaurant);
+      res.json({ restaurant: restaurant });
     } catch (e) {
       console.log(`api, ${e}`);
       res.status(500).json({ error: e });
