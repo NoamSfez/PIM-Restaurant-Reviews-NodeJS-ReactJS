@@ -1,32 +1,33 @@
-# API-Restaurant-Reviews
+## PIM-Restaurant-Reviews-NodeJS-ReactJS
 
-\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***_LINKS_\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
-https://www.youtube.com/watch?v=mrHNSanmqQ4
+### Project Description
 
-https://cloud.mongodb.com/v2/61b0895c892afd224d38c2cd#metrics/replicaSet/61b08a7d9c6328293e0aa076/explorer/sample_restaurants/reviews/find
+Implementation of a basic Product Information Management (PIM) system by consuming a REST API.
+The backend system is developped in JavaScript with NodeJS and express, and the client-side with ReactJS Library.
 
-\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***TO DO\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
+### Project Technologies
 
-Apprendre les requests de MangoDB
-https://www.w3schools.com/nodejs/nodejs_mongodb.asp
+JavaScript ES6, NodeJS, npm, express.js, Axios, ReactJS, MongoDB, REST API, GitHub
 
-apprendre bootstrap, la video es faite avec bootstrap@4.6.0
+### Launch Servers:
 
-https://www.w3schools.com/react/react_hooks.asp
-a voir les HOOKS pour ajouter des choses dans la state comme par exemple ici:
-const [user, setUser] = React.useState(null);
-qui va creer user ds la state avec value= null et un setter pour elle aussi
+NodeJS backend server run on 8000 port and use MongoDB databases.
+ReactJS frontend server run on 3000 port.
 
-a voir aussi useEffect
-useEffect(() => {
-getRestaurant(props.match.params.id);
-}, [props.match.params.id]);
-ca update le getRestaurant(props.match.params.id) ssi [props.match.params.id] est modifie
+#### NodeJS Backend:
 
-\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***START SERVERS\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
+With nodemon method:
 
-backend nodemon index.js
-sur le port 8000
+```bash
+$ cd backend
+$ nodemon index.js
+```
 
-frontend npm start
-sur le port 3000
+#### ReactJS FrontEnd:
+
+With npm method:
+
+```bash
+$ cd frontend
+$ npm start
+```

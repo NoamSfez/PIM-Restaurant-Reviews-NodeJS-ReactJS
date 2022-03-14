@@ -109,16 +109,17 @@ export default class RestaurantsDAO {
     }
   }
 
-  //   static async getCuisines() {
-  //     let cuisines = [];
-  //     try {
-  //       cuisines = await restaurants.distinct("cuisine");
-  //       return cuisines;
-  //     } catch (e) {
-  //       console.error(`Unable to get cuisines, ${e}`);
-  //       return cuisines;
-  //     }
-  //   }
+  static async getCuisinesSimple() {
+    let cuisines = [];
+    try {
+      cuisines = await restaurants.distinct("cuisine");
+      return cuisines;
+    } catch (e) {
+      console.error(`Unable to get cuisines, ${e}`);
+      return cuisines;
+    }
+  }
+
   static async getCuisines() {
     try {
       //

@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant";
 import { Link } from "react-router-dom";
 
-// ce fichier nous permet de recup la liste des restaurants depuis le server du backend
-// pour ca on va creer un folder services et dedans le file restaurant.js qui va utiliser
-// le file http-commons.js et de axios
-
-const RestaurantsList = (props) => {
+const RestaurantsList2 = (props) => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [searchZip, setSearchZip] = useState("");
@@ -192,4 +188,4 @@ const RestaurantsList = (props) => {
   );
 };
 
-export default RestaurantsList;
+export default RestaurantsList2;

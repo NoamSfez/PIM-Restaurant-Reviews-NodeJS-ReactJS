@@ -28,7 +28,7 @@ class RestaurantDataService {
   }
 
   getCuisines(id) {
-    return http.get(`/cuisines`);
+    return http.get(`/cuisines/simple`);
   }
 }
 

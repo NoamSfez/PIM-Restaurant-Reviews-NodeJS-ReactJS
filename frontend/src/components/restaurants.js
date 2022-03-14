@@ -14,16 +14,16 @@ const Restaurant = (props) => {
   const [restaurant, setRestaurant] = useState(initialRestaurantState);
 
   //load restaurant from the backend
-  const getRestaurant = (id) => {
-    RestaurantDataService.get(id)
-      .then((response) => {
-        setRestaurant(response.data);
-        console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  const getRestaurant = async (id) => {
+    try {
+      let restaurant = await RestaurantDataService.get(id);
+      setRestaurant(restaurant.data.restaurant);
+      console.log(restaurant.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
+
   //update the restaurant
   useEffect(() => {
     getRestaurant(props.match.params.id);
